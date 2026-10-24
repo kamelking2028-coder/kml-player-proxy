@@ -1,0 +1,22 @@
+KML PLAYER — SERVEUR DE PLAYLIST POUR RENDER
+
+Fichiers nécessaires :
+- server.js
+- package.json
+
+Déploiement conseillé dans un dépôt GitHub séparé, par exemple kml-player-proxy.
+
+Dans Render :
+1. New > Web Service, puis connecter le dépôt GitHub contenant ces fichiers.
+2. Runtime / Language : Node.
+3. Build Command : npm install
+4. Start Command : npm start
+5. Choisir Free pour les premiers essais. Attention : le service gratuit s'endort après 15 minutes d'inactivité et peut prendre environ une minute à redémarrer.
+6. Dans Environment, créer KML_API_KEY avec une valeur aléatoire longue d'au moins 24 caractères.
+7. Déployer. L'URL Render doit répondre sur /health avec {"status":"ok"}.
+
+L'endpoint de chargement est POST /api/playlist. Le corps doit être de type application/x-www-form-urlencoded et contenir url=... ; l'en-tête X-KML-Key doit reprendre la valeur KML_API_KEY définie dans Render.
+
+IMPORTANT : après le déploiement, il faudra modifier js/configuration.js pour remplacer l'appel relatif à playlist.php par l'URL Render complète, ajouter l'en-tête X-KML-Key, puis tester dans le navigateur avant de recompiler l'APK.
+
+Le service bloque les adresses IP privées/réservées, limite le volume d'une playlist à 25 MiB et applique une limite simple de requêtes par IP. La clé envoyée depuis le client peut être extraite d'une application ou d'un dépôt public : elle ne constitue donc pas un secret fort. Elle sert surtout de barrière de base, avec les limites de requêtes et les protections réseau.
