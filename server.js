@@ -176,7 +176,8 @@ async function fetchPlaylistWithRedirects(rawUrl) {
         redirect: 'manual',
         signal: controller.signal,
         headers: {
-          'User-Agent': 'KML-Player/1.0 (+playlist loader)',
+          'User-Agent': 'VLC/3.0.20 LibVLC/3.0.20',
+          
           'Accept':
             'audio/x-mpegurl, application/vnd.apple.mpegurl, text/plain, */*'
         }
