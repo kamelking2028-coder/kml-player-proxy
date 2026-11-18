@@ -360,4 +360,16 @@ app.listen(PORT, '0.0.0.0', () => {
     `KML playlist proxy listening on port ${PORT}`
   );
 });
+const body = await response.text();
 
+console.log('[KML] STATUS:', response.status);
+
+console.log('[KML] HEADERS:', {
+    contentType: response.headers.get('content-type'),
+    server: response.headers.get('server')
+});
+
+console.log(
+    '[KML] BODY PREVIEW:',
+    body.substring(0, 2000)
+);
