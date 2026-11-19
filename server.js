@@ -213,12 +213,22 @@ async function fetchPlaylistWithRedirects(rawUrl) {
       if (!response.ok) {
         let errorBody = '';
 
-        try {
-          errorBody = await response.text();
-          errorBody = errorBody.slice(0, 1000);
-        } catch {
-          errorBody = '(corps de réponse illisible)';
-        }
+      try {
+
+         errorBody = await response.text();
+
+         console.log(
+           '[KML] BODY PREVIEW:',
+           errorBody.substring(0, 2000)
+         );
+
+         errorBody = errorBody.slice(0, 1000);
+
+       } catch {
+
+         errorBody = '(corps de réponse illisible)';
+
+      }
 
         console.error('[KML] Diagnostic réponse distante :', {
           status: response.status,
