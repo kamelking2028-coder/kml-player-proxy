@@ -153,17 +153,12 @@ async function validatePublicHttpUrl(raw) {
       throw new Error(
         'Le domaine ne pointe pas uniquement vers des adresses IP publiques.'
       );
-    }
+     }
   }
 
   return target;
 }
-console.log('[KML] REQUÊTE FOURNISSEUR', {
-  hostname: target.hostname,
-  protocol: target.protocol,
-  userAgent: 'VLC/3.0.20 LibVLC/3.0.20',
-  accept: 'audio/x-mpegurl, application/vnd.apple.mpegurl, text/plain, */*'
-});
+
 async function fetchPlaylistWithRedirects(rawUrl) {
   let url = rawUrl;
 
