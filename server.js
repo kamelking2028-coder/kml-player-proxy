@@ -205,10 +205,15 @@ async function fetchPlaylistWithRedirects(rawUrl) {
         continue;
       }
 
-      console.log(
-        '[KML] TEST : réponse distante reçue',
-        response.status
-      );
+      console.log('[KML] DIAGNOSTIC FOURNISSEUR',   {
+         status: response.status,
+         statusText: response.statusText,
+         url: target.origin + target.pathname,
+         contentType: response.headers.get('content-type'),
+         server: response.headers.get('server'),
+         location: response.headers.get('location'),
+          via: response.headers.get('via')
+      });
 
       if (!response.ok) {
         let errorBody = '';
