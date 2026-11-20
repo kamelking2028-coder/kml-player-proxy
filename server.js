@@ -176,8 +176,7 @@ async function fetchPlaylistWithRedirects(rawUrl) {
         redirect: 'manual',
         signal: controller.signal,
         headers: {
-          'User-Agent': 'VLC/3.0.20 LibVLC/3.0.20',
-          
+          'User-Agent': 'IPTV Smarters',
           'Accept':
             'audio/x-mpegurl, application/vnd.apple.mpegurl, text/plain, */*'
         }
